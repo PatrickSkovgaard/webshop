@@ -2,12 +2,17 @@ package kea.demo_varekatalog.models;
 
 public class Product {
 
-    private int product_id = 0;
-    private String product_name = new String();
-    private int product_price = 0;
+    private int product_id;
+    private String product_name;
+    private int product_price;
 
     public Product (int product_id, String product_name, int product_price){
         this.product_id = product_id;
+        this.product_name = product_name;
+        this.product_price = product_price;
+    }
+
+    public Product(String product_name, int product_price){
         this.product_name = product_name;
         this.product_price = product_price;
     }
