@@ -12,7 +12,7 @@ public class ProductHandler {
     ProductRepository pRepo = new ProductRepository();
 
 
-    public ArrayList<Product> showProducts(){
+    public ArrayList<Product> getProducts(){
         return pRepo.getProducts();
     }
 
@@ -25,12 +25,22 @@ public class ProductHandler {
         return product;
     }
 
-    //GET PRODUCT METHOD???
+    public Product getProduct (String product_name){
+        product = pRepo.getProduct(product_name);
+
+        return product;
+    }
 
 
-    public Product updateProduct (String product_name, int product_price) {
-        pRepo.updateProduct(product_name, product_price);
+    public void updateProduct (int id, String formerProduct_name, String product_name, int product_price) {
 
-        return (Product) pRepo.getProduct(product_name);
+        String[] strAsArray = product_name.split(",");
+        String newName = strAsArray[id-1];
+        pRepo.updateProduct(formerProduct_name, newName, product_price);
+    }
+
+    public int returnSpecificId(String product_name){
+
+        return pRepo.getSpecificId(product_name);
     }
 }
