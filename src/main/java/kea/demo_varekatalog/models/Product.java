@@ -2,52 +2,50 @@ package kea.demo_varekatalog.models;
 
 public class Product {
 
-    private int product_id;
-    private String product_name;
-    private int product_price;
+    private int id;
+    private String name;
+    private int price;
 
-    public Product (int product_id, String product_name, int product_price){
-        this.product_id = product_id;
-        this.product_name = product_name;
-        this.product_price = product_price;
+    public Product (int id, String name, int price){
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
-    public Product(String product_name, int product_price){
-        this.product_name = product_name;
-        this.product_price = product_price;
-    }
-
-
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public Product(String name, int price){
+        this.name = name;
+        this.price = price;
     }
 
 
-    public String getProduct_name() {
-        return product_name;
+    public int getId() {
+        return id;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setId(int id) {
+        this.id = id;
     }
 
 
-    public int getProduct_price() {
-        return product_price;
+    public String getName() {
+        return name;
     }
 
-    public void setProduct_price(int product_price) {
-        this.product_price = product_price;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
 
     @Override
     public String toString(){
-
-        return "Product name: " + product_name + " | Product price: " + product_price;
+        return "Product name: " + name + " | Product price: " + price;
     }
 }

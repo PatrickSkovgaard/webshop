@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Update a product</title>
@@ -7,6 +7,25 @@
 <body>
     <p>Update your product, by name or price</p>
 
+
+    <form action="/update_product_info" method="post">
+        <ul th:each="product : ${product_list}">
+
+            <p th:text="${product.getId}" th:value="${product.getId}"></p>
+            <li th:text="${product}"></li>
+
+            <label for="product_name">Name</label>
+            <input type="text" id="product_name" name="product_name" th:placeholder="${product.getName}">
+            <label for="product_price">Price</label>
+            <input type="text" id="product_price" name="product_price" th:placeholder="${product.getPrice}">
+
+            <label for="prod_id"></label>
+            <input type="text" id="prod_id" name="prod_id" th:value="${product.getId}">
+
+
+        </ul>
+        <button type="submit">Update</button>
+    </form>
 
 </body>
 </html>

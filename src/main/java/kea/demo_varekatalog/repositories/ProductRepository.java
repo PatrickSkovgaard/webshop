@@ -7,28 +7,91 @@ import java.util.ArrayList;
 
 public class ProductRepository extends Repository  {
 
-    public ResultSet showProducts(){
-       return executeQuery("SELECT * FROM product;");
-    }
-
+            //Create
     public void addProduct (Product product){
-        executeQuery("INSERT INTO product(product_name, product_price) VALUES (\"" +
-                         product.getProduct_name()
-                         + "\", " + product.getProduct_price() + "); ");
+        executeQuery("INSERT INTO product(p_name, price) VALUES (\"" +
+                         product.getName()
+                         + "\", " + product.getPrice() + ");");
     }
 
-    public int updateProduct(String formerProduct_name, String product_name, int product_price){
+            //Read one (name)
+    public Product getProductByName(String product_name){
+        ResultSet rs = executeQuery("SELECT * FROM product WHERE product.p_name =" +
+                "\"" + product_name + "\";");
 
+
+        return getProductQuery(rs);
+    }
+
+            //Read one (ID)
+    public Product getProductById (int id){
+        ResultSet rs = executeQuery("SELECT * FROM product WHERE product.id = " + id + ";");
+
+        return getProductQuery(rs);
+    }
+
+    public Product getProductByIdAndPrice (int id, int price){
+        ResultSet rs = executeQuery("SELECT * FROM product WHERE product.id = " + id +
+                                        "AND product.price = " + price + ";");
+
+        return getProductQuery(rs);
+    }
+
+            //Read one or many (price)
+    public ArrayList<Product> getProductOrProductsByPrice (int price){
+        ResultSet rs = executeQuery("SELECT * FROM product " +
+                                        "WHERE product.price = " + price + ";");
+
+        ArrayList<Product> products = new ArrayList<>();
+
+        try {
+            while (rs.next()) {
+                Product product = new Product(getProductQuery(rs).getName(),
+                                              getProductQuery(rs).getPrice());
+                products.add(product);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Get products by Price gik galt " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return products;
+    }
+
+            //Read all
+    public ArrayList<Product> getProducts(){
+        ResultSet res = executeQuery("SELECT * FROM product;");
+        ArrayList<Product> products = new ArrayList<>();
+
+        try{
+            while(res.next()){
+                products.add(new Product(res.getString("p_name"),
+                        res.getInt("price")));
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error getting products from repo " + e.getMessage());
+            e.printStackTrace();
+        }
+        return products;
+    }
+
+            //Update
+    public void updateProduct(Product product){
+
+        executeUpdate("UPDATE product SET name = \"" + product.getName()
+                            + "\", price = " + product.getPrice());
+
+        /*
         ResultSet rs = executeQuery("SELECT * FROM product " +
                 "WHERE product.product_name = \"" + formerProduct_name + "\" ;");
 
         String formerName = "";
-        int id = 0;
 
         try{
             rs.next();
             formerName = rs.getString("product_name");
-            id = rs.getInt("product_id");
         }
         catch(Exception e){
             System.out.println("Gik galt i update product " + e.getMessage());
@@ -40,25 +103,59 @@ public class ProductRepository extends Repository  {
                         "product.product_price =" + product_price + " " +
                         "WHERE product.product_name =\"" + formerName + "\";");
 
-        return id;
+         */
+    }
+
+            //Delete (name)
+    public void removeProduct (String product_name){
+        executeUpdate("DELETE product FROM product WHERE product.p_name = \" "
+                + product_name + "\";");
+    }
+
+            //Delete (ID)
+    public void removeProduct (int id){
+        executeUpdate("DELETE product FROM product WHERE product.id = "
+                + id + ";");
+    }
+
+
+      //Hjælpe metode til at lave en query på et produkt, fremfor kodeduplikation
+    protected Product getProductQuery(ResultSet rs){
+        Product product = null;
+        try {
+            rs.next();
+            product = new Product(rs.getString("p_name"),
+                    rs.getInt("price"));
+        }
+        catch(Exception e){
+            System.out.println("Get Product gik galt " + e.getMessage());
+            e.printStackTrace();
+        }
+        return product;
+    }
+
+
+    public ResultSet showProducts(){
+        return executeQuery("SELECT * FROM product;");
     }
 
 
     public void updateProductName(String product_name){
             executeUpdate("UPDATE product " +
-                    "SET product.product_name = \" " + product_name + "\";");
+                    "SET product.p_name = \" " + product_name + "\";");
         }
 
     public void updateProductPrice(int product_price){
         executeUpdate("UPDATE product " +
-                "SET product.product_price =  " + product_price + ";");
+                "SET product.price =  " + product_price + ";");
     }
 
+    /*
     public int getSpecificId(String product_name){
         ResultSet rs = executeQuery("SELECT product.product_id FROM product " +
                         "WHERE product.product_name =\"" + product_name + "\";");
 
-        int id = -1;
+        int id = 0;
 
         try{
             rs.next();
@@ -72,42 +169,7 @@ public class ProductRepository extends Repository  {
         return id;
 
     }
-
+*/
     //SEARCH FOR PRODUCT METHOD???
-
-    public Product getProduct(String product_name){
-        ResultSet rs = executeQuery("SELECT * FROM product WHERE \" " + product_name + "\";");
-        Product product = null;
-        try {
-            rs.next();
-            product = new Product(rs.getInt("product_id"), rs.getString("product_name"), rs.getInt("product_price"));
-        }
-        catch(Exception e){
-            System.out.println("Get Product gik galt " + e.getMessage());
-            e.printStackTrace();
-        }
-        return product;
-    }
-
-    public ArrayList<Product> getProducts(){
-        ResultSet res = executeQuery("SELECT * FROM product;");
-        ArrayList<Product> products = new ArrayList<>();
-
-        try{
-            while(res.next()){
-                products.add(new Product(res.getInt("product_id"), res.getString("product_name"), res.getInt("product_price")));
-            }
-        }
-        catch(Exception e){
-            System.out.println("Error getting products from repo " + e.getMessage());
-            e.printStackTrace();
-        }
-        return products;
-    }
-
-
-    public void removeProduct (String product_name){
-        executeUpdate("DELETE product FROM product WHERE product.product_name = \" " + product_name + "\";");
-    }
 }
 
