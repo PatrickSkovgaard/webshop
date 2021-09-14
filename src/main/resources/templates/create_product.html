@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Create</title>
@@ -8,14 +8,14 @@
 
     <h3>Add a product to the list</h3>
 
-    <form action="/update_product_info">
+    <form action="/update_product_info" method="post">
 
         <label for="name"></label>
-        <input type="text" id="name" name="name" placeholder="Enter name of item">
+        <input type="text" id="name" name="product_name" placeholder="Enter name of item">
         <label for="price"></label>
-        <input type="number" id="price" name="price" placeholder="Enter price of item">
+        <input type="number" id="price" name="product_price" placeholder="Enter price of item">
 
-        <button type="submit">Add Product</button>
+        <button type="submit" name="prod_id" th:value="${id}" th:placeholder="${id}">Add Product</button>
     </form>
 
 </body>

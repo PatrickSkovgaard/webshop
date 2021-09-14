@@ -8,24 +8,23 @@
 
     <p>Here are the products</p>
 
+
     <ul th:each="product : ${product_list}">
 
+        <li th:text="${product.getId}"></li>
         <li th:text="${product}"></li>
 
-        <!--
-        <label for="product_name">Name</label>
-        <input type="text" id="product_name" name="product_name" th:placeholder="${product.getName}">
-        <label for="product_price">Price</label>
-        <input type="text" id="product_price" name="product_price" th:placeholder="${product.getPrice}">
+        <form action="/direct_to_update_product_page" method="post">
+        <button type="submit" name="product_id" th:value="${product.getId}" th:placeholder="${product.getId}">Update</button>
+        </form>
 
-        <label for="product_id"></label>
-        <input type="hidden" id="product_id" name="product_id" th:value="${product.getId}">
-        -->
-        <label for="prod_id"></label>
-        <input type="hidden" id="prod_id" th:name="prod_id" th:value="${product.getId}">
+        <form action="/direct_to_delete_product" method="post">
+        <button type="submit" name="delete_product" th:value="${product.getId}" th:placeholder="${product.getId}">Delete</button>
+        </form>
 
-        <a href="/update_product_page" th:value="${product.getId}"><button type="button" name="prod_id"></button></a>
     </ul>
+
+    <a href="/create_product"><button>Add a product</button></a>
 
 </body>
 </html>

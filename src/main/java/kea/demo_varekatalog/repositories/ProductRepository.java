@@ -66,7 +66,7 @@ public class ProductRepository extends Repository  {
 
         try{
             while(res.next()){
-                products.add(new Product(res.getString("p_name"),
+                products.add(new Product(res.getInt("id"),res.getString("p_name"),
                         res.getInt("price")));
             }
         }
@@ -80,30 +80,9 @@ public class ProductRepository extends Repository  {
             //Update
     public void updateProduct(Product product){
 
-        executeUpdate("UPDATE product SET name = \"" + product.getName()
-                            + "\", price = " + product.getPrice());
-
-        /*
-        ResultSet rs = executeQuery("SELECT * FROM product " +
-                "WHERE product.product_name = \"" + formerProduct_name + "\" ;");
-
-        String formerName = "";
-
-        try{
-            rs.next();
-            formerName = rs.getString("product_name");
-        }
-        catch(Exception e){
-            System.out.println("Gik galt i update product " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        executeUpdate("UPDATE product " +
-                        "SET product.product_name =\"" + product_name + "\", " +
-                        "product.product_price =" + product_price + " " +
-                        "WHERE product.product_name =\"" + formerName + "\";");
-
-         */
+        executeUpdate("UPDATE product SET p_name = \"" + product.getName()
+                            + "\", price = " + product.getPrice() +
+                            " WHERE product.id = " + product.getId() + ";");
     }
 
             //Delete (name)
@@ -120,11 +99,11 @@ public class ProductRepository extends Repository  {
 
 
       //Hjælpe metode til at lave en query på et produkt, fremfor kodeduplikation
-    protected Product getProductQuery(ResultSet rs){
+    public Product getProductQuery(ResultSet rs){
         Product product = null;
         try {
             rs.next();
-            product = new Product(rs.getString("p_name"),
+            product = new Product(rs.getInt("id"), rs.getString("p_name"),
                     rs.getInt("price"));
         }
         catch(Exception e){

@@ -17,12 +17,10 @@ public class ProductService {
     }
 
 
-    public Product addNewProduct(String product_name, int product_price){
+    public void addNewProduct(int id, String product_name, int product_price){
         product = new Product(product_name, product_price);
 
         pRepo.addProduct(product);
-
-        return product;
     }
 
     public Product getProductByName (String product_name){
@@ -45,5 +43,15 @@ public class ProductService {
 
     public void updateProduct (Product product) {
         pRepo.updateProduct(product);
+    }
+
+    public void deleteProduct(int id){
+        pRepo.removeProduct(id);
+    }
+
+    public int calculateNextId(){
+        int size = getProducts().size();
+
+        return size + 1;
     }
 }
