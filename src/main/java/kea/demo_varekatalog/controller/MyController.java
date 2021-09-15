@@ -62,7 +62,7 @@ public class MyController {
                                     @RequestParam(name="product_name") String name,
                                     @RequestParam(name="product_price") int price) {
 
-        if (productService.getProductById(id) != null) {
+        if (productService.checkIfProductExists(id)) {
             productService.updateProduct(new Product(id, name, price));
         }
         else {

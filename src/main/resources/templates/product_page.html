@@ -11,7 +11,7 @@
 
     <ul th:each="product : ${product_list}">
 
-        <li th:text="${product.getId}"></li>
+        <li th:text="${product.getId}" hidden></li>
         <li th:text="${product}"></li>
 
         <form action="/direct_to_update_product_page" method="post">

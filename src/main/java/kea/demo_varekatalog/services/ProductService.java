@@ -50,8 +50,18 @@ public class ProductService {
     }
 
     public int calculateNextId(){
-        int size = getProducts().size();
+        int size = (getProductById(getProducts().size()).getId() + 2);
+        System.out.println(size);
+        return size;
+    }
 
-        return size + 1;
+    public boolean checkIfProductExists(int id){
+
+        for (int i = 1; i <= getProducts().size(); i++){
+            if (getProductById(i).getId() == id){
+                return true;
+            }
+        }
+        return false;
     }
 }

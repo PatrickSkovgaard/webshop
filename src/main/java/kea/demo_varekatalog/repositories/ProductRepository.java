@@ -9,7 +9,7 @@ public class ProductRepository extends Repository  {
 
             //Create
     public void addProduct (Product product){
-        executeQuery("INSERT INTO product(p_name, price) VALUES (\"" +
+        executeUpdate("INSERT INTO product(p_name, price) VALUES (\"" +
                          product.getName()
                          + "\", " + product.getPrice() + ");");
     }
@@ -100,15 +100,14 @@ public class ProductRepository extends Repository  {
 
       //Hjælpe metode til at lave en query på et produkt, fremfor kodeduplikation
     public Product getProductQuery(ResultSet rs){
-        Product product = null;
+        Product product;
         try {
             rs.next();
             product = new Product(rs.getInt("id"), rs.getString("p_name"),
                     rs.getInt("price"));
         }
         catch(Exception e){
-            System.out.println("Get Product gik galt " + e.getMessage());
-            e.printStackTrace();
+            product = new Product("tomt", 0);
         }
         return product;
     }
