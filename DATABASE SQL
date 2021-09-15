@@ -1,0 +1,15 @@
+DROP SCHEMA webshop;
+CREATE SCHEMA webshop;
+USE webshop;
+
+CREATE TABLE product(
+                        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                        p_name VARCHAR(30),
+                        price INT
+);
+
+INSERT INTO product(p_name, price) VALUES('Banan', 7);
+INSERT INTO product(p_name, price) VALUES('1 kg sukker', 12);
+INSERT INTO product(p_name, price) VALUES('Phillips TV', 10000);
+
+SELECT * FROM product;
