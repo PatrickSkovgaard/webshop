@@ -5,13 +5,12 @@
     <title>Update a product</title>
 </head>
 <body>
-    <p>Update your product, by name or price</p>
 
+    <h2>Update your product, by name or price</h2>
 
     <form action="/update_product_info" method="post">
 
             <p th:text="${product}"></p>
-
 
             <label for="product_name">Name</label>
             <input type="text" id="product_name" name="product_name" th:placeholder="${product.getName}">
@@ -21,8 +20,8 @@
             <label for="prod_id"></label>
             <input type="hidden" id="prod_id" name="prod_id" th:value="${product.getId}" placeholder="${product.getId}" readonly>
 
+            <button type="submit">Update product</button>
 
-        <button type="submit">Update</button>
     </form>
 
 </body>

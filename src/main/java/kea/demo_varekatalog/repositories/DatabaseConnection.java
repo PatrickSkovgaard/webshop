@@ -8,15 +8,6 @@ import java.util.Properties;
 
 public class DatabaseConnection {
 
-    /*
-    private Properties properties;
-    private Connection connection;
-
-    private String dbConnection;
-    private String username;
-    private String password;
-*/
-
     public Connection getConnection() {
 
         Connection connection;
@@ -37,6 +28,4 @@ public class DatabaseConnection {
         }
         return connection;
     }
-
-
 }

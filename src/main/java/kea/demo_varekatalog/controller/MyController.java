@@ -16,15 +16,11 @@ public class MyController {
 
     private ProductService productService = new ProductService();
     private ArrayList<Product> products = new ArrayList<>();
-    private HttpSession session;
-
-
-
-
 
     @GetMapping("/")
     public String showProductPage(Model model){
         model.addAttribute("product_list", productService.getProducts());
+
         return "product_page";
     }
 
@@ -52,7 +48,6 @@ public class MyController {
     public String updateProjectPage(@PathVariable("id") int id,
                                                   Model model){
         model.addAttribute("product", productService.getProductById(id));
-       // model.addAttribute("product_id", id);
 
         return "update_product_page";
     }
@@ -61,13 +56,16 @@ public class MyController {
     public String updateProductInfo(@RequestParam(name="prod_id") int id,
                                     @RequestParam(name="product_name") String name,
                                     @RequestParam(name="product_price") int price) {
-
-        if (productService.checkIfProductExists(id)) {
             productService.updateProduct(new Product(id, name, price));
-        }
-        else {
-            productService.addNewProduct(id, name, price);
-        }
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/product_created")
+    public String productCreated(@RequestParam(name="prod_id") int id,
+                                 @RequestParam(name="product_name") String name,
+                                 @RequestParam(name="product_price") int price){
+        productService.addNewProduct(id, name, price);
 
         return "redirect:/";
     }
