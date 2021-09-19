@@ -2,29 +2,48 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link href="..//static/product_page_style.css" rel="stylesheet" type="text/css">
     <title>Product Page</title>
 </head>
 <body>
 
-    <p>Here are the products</p>
+    <header>
+    Product Page
+    </header>
 
+        <h2>Here are the products</h2>
+
+        <form action="/create_product">
+            <section id="create_button">
+                <button>Add a product</button>
+            </section>
+        </form>
+
+<section id="list_and_buttons">
+
+    <div class="ps">
+    <p >Product Name</p>
+    <p >Product Price</p>
+    </div>
 
     <ul th:each="product : ${product_list}">
 
-        <li th:text="${product.getId}" hidden></li>
-        <li th:text="${product}"></li>
+        <li th:text="${product.getName}"> </li>
+
+        <li th:text="${product.getPrice}"></li>
+
 
         <form action="/direct_to_update_product_page" method="post">
-        <button type="submit" name="product_id" th:value="${product.getId}" th:placeholder="${product.getId}">Update</button>
+        <button class="ul_buttons" id="update_button" name="product_id" th:placeholder="${product.getId}" th:value="${product.getId}" type="submit">Update</button>
         </form>
+
 
         <form action="/direct_to_delete_product" method="post">
-        <button type="submit" name="delete_product" th:value="${product.getId}" th:placeholder="${product.getId}">Delete</button>
+        <button class="ul_buttons" id="delete_button" name="delete_product" th:placeholder="${product.getId}" th:value="${product.getId}" type="submit">Delete</button>
         </form>
-
     </ul>
 
-    <a href="/create_product"><button>Add a product</button></a>
+</section>
 
 </body>
 </html>

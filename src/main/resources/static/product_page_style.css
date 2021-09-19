@@ -1,0 +1,115 @@
+body{
+    background-image: url("../static/images/img.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header{
+    font-size: 50px;
+    font-family: Haettenschweiler, fantasy;
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-family: Bahnschrift, serif;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.ps{
+    display: flex;
+    justify-content: center;
+    margin-right:150px;
+    margin-bottom: -30px;
+    color: black;
+    flex-direction: row;
+}
+
+p{
+    margin-right: 5px;
+    margin-left:5px;
+    border: solid black 3px;
+    background-color:lightyellow;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ul_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+li{
+    display: flex;
+    justify-content: center;
+    font-size: 16px ;
+    opacity: 100%;
+    background-color: burlywood;
+    background-size:contain ;
+    border: solid black 1px;
+    min-width: 7%;
+
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6px;
+    opacity: 100%;
+}
+
+button{
+    display: flex inline;
+    justify-content: center;
+    padding: 13px 16px;
+    margin-top:5px;
+    margin-left: 2px;
+    font-size: 16px;
+    font-family: Dialog, sans-serif, "monospace";
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 rgb(0,0,0);
+    -webkit-transition: ease-out 0.5s;
+    -moz-transition: ease-out 0.6s;
+    transition: ease-out 0.5s;
+}
+
+button:hover{
+    font-size: 17px;
+}
+
+#update_button:hover{
+    color: blue;
+    background-color: black;
+    border-color: darkblue;
+}
+
+#delete_button:hover{
+    color: red;
+    background-color: black;
+    border-color: darkred;
+}
+
+#create_button{
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    margin: 8px 8px 40px 55px;
+
+}
+
+#create_button button:hover{
+    color: lawngreen;
+    background-color: black;
+    border-color: lawngreen;
+}
