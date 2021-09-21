@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link href="..//static/product_page_style.css" rel="stylesheet" type="text/css">
     <title>Update a product</title>
 </head>
 <body>
@@ -9,19 +10,23 @@
     <h2>Update your product, by name or price</h2>
 
     <form action="/update_product_info" method="post">
+        <div class="update_product_main">
 
-            <p th:text="${product}"></p>
+            <div class = "product_update_form">
 
             <label for="product_name">Name</label>
-            <input type="text" id="product_name" name="product_name" th:placeholder="${product.getName}">
+            <input id="product_name" name="product_name" th:placeholder="${product.getName}" th:value="${product.getName}" type="text">
             <label for="product_price">Price</label>
-            <input type="text" id="product_price" name="product_price" th:placeholder="${product.getPrice}">
+            <input id="product_price" name="product_price" th:placeholder="${product.getPrice}" th:value="${product.getPrice}" type="text">
+
+            </div>
 
             <label for="prod_id"></label>
             <input type="hidden" id="prod_id" name="prod_id" th:value="${product.getId}" placeholder="${product.getId}" readonly>
 
             <button type="submit">Update product</button>
 
+        </div>
     </form>
 
 </body>

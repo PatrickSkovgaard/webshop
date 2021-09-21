@@ -155,3 +155,80 @@ button:hover{
     background-color: blueviolet;
     scrollbar-highlight-color: red;
 }
+
+/* Create Product below */
+
+h3{
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-family: Bahnschrift, serif;
+    font-size: 40px;
+    margin-left: 20px;
+}
+
+.info_about_product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: initial;
+    min-width: 15%
+}
+
+.info_about_product input{
+    block-size: 30px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 10px
+}
+
+.add_button{
+    display: flex;
+    justify-content: center;
+    block-size: 50px;
+    margin-top: 25px;
+}
+
+.add_button button:hover{
+    color: lawngreen;
+    background-color: black;
+    border-color: lawngreen;
+}
+
+/* Update product page below */
+
+h2{
+    font-size:40px;
+}
+
+.update_product_main{
+    display: flex;
+    flex-direction: column;
+}
+
+.product_update_form{
+    display: flex;
+    flex-direction: row;
+    color: black;
+    font-family: Bahnschrift, serif;
+}
+
+.product_update_form input{
+    margin-left: 3px;
+    margin-right: 15px;
+}
+
+.update_product_main button{
+    display: flex;
+    justify-content: center;
+    block-size: 50px;
+    margin-top: 10px;
+    margin-left: 55px;
+    width: 80%;
+}
+
+.update_product_main button:hover{
+    color: blue;
+    background-color: black;
+    border-color: darkblue;
+}
