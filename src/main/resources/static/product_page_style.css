@@ -28,13 +28,23 @@ h2{
     margin-bottom: -30px;
     color: black;
     flex-direction: row;
+    block-size: 55px;
+
+}
+
+.ps, li{
+    display: flex;
+    flex-direction: row;
 }
 
 p{
     margin-right: 5px;
     margin-left:5px;
-    border: solid black 3px;
-    background-color:lightyellow;
+    border: solid black 2px;
+    background-color: yellow;
+    min-width: 8%;
+    display: flex;
+    justify-content: center;
 }
 
 ul{
@@ -51,14 +61,40 @@ ul{
 
 li{
     display: flex;
+    margin: auto;
+}
+
+.name_and_price_flex{
+    display: flex;
     justify-content: center;
     font-size: 16px ;
     opacity: 100%;
-    background-color: burlywood;
-    background-size:contain ;
+    background-color: aliceblue;
+    background-size:contain;
     border: solid black 1px;
-    min-width: 7%;
+    margin-right:5px;
+}
 
+.name_flex{
+    margin-right: 90px;
+    margin-left: 20px;
+    display: flex;
+}
+
+.price_flex{
+    margin-right: 20px;
+    display: flex;
+
+}
+
+.price_flex p{
+    background-color: aliceblue;
+    border: hidden;
+    margin: auto;
+    margin-left: 4px;
+    font-variant: all-petite-caps;
+    font-size: 16px;
+    color: darkgreen;
 }
 
 form{
@@ -112,4 +148,10 @@ button:hover{
     color: lawngreen;
     background-color: black;
     border-color: lawngreen;
+}
+
+.background-filler{
+    border: solid black 1px;
+    background-color: blueviolet;
+    scrollbar-highlight-color: red;
 }

@@ -19,7 +19,11 @@
             </section>
         </form>
 
-<section id="list_and_buttons">
+    <div class="background-filler">
+
+        <section id="list_and_buttons">
+
+
 
     <div class="ps">
     <p >Product Name</p>
@@ -28,10 +32,17 @@
 
     <ul th:each="product : ${product_list}">
 
+        <div class="name_and_price_flex">
+
+        <div class="name_flex">
         <li th:text="${product.getName}"> </li>
+        </div>
 
-        <li th:text="${product.getPrice}"></li>
-
+            <div class="price_flex">
+        <li th:text="${product.getPrice}" ></li>
+        <p>kr.</p>
+        </div>
+        </div>
 
         <form action="/direct_to_update_product_page" method="post">
         <button class="ul_buttons" id="update_button" name="product_id" th:placeholder="${product.getId}" th:value="${product.getId}" type="submit">Update</button>
@@ -43,7 +54,9 @@
         </form>
     </ul>
 
+
 </section>
 
+    </div>
 </body>
 </html>
